@@ -1,12 +1,18 @@
 import MonthGroup from "@/components/gallery/MonthGroup";
-import type { YearGroup } from "@/types/media";
+
+import type {
+  GalleryItem,
+  YearGroup,
+} from "@/types/media";
 
 interface TimelineProps {
   groups: YearGroup[];
+  onOpen: (item: GalleryItem) => void;
 }
 
 export default function Timeline({
   groups,
+  onOpen,
 }: TimelineProps) {
   if (groups.length === 0) {
     return (
@@ -44,6 +50,7 @@ export default function Timeline({
             <MonthGroup
               key={`${year.year}-${month.month}`}
               group={month}
+              onOpen={onOpen}
             />
           ))}
         </section>

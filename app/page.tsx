@@ -1,5 +1,5 @@
+import GalleryClient from "@/components/gallery/GalleryClient";
 import Header from "@/components/layout/Header";
-import Timeline from "@/components/gallery/Timeline";
 import Section from "@/components/ui/Section";
 
 import galleryData from "@/content/data/gallery.json";
@@ -46,7 +46,10 @@ export default function Home() {
             </div>
           </header>
 
-          <Timeline groups={timeline} />
+          <GalleryClient
+            groups={timeline}
+            items={items}
+          />
         </Section>
       </main>
     </>

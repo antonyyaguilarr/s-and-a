@@ -1,12 +1,18 @@
 import DayGroup from "@/components/gallery/DayGroup";
-import type { MonthGroup as MonthGroupType } from "@/types/media";
+
+import type {
+  GalleryItem,
+  MonthGroup as MonthGroupType,
+} from "@/types/media";
 
 interface MonthGroupProps {
   group: MonthGroupType;
+  onOpen: (item: GalleryItem) => void;
 }
 
 export default function MonthGroup({
   group,
+  onOpen,
 }: MonthGroupProps) {
   const numberOfItems = group.days.reduce(
     (total, day) => total + day.items.length,
@@ -31,6 +37,7 @@ export default function MonthGroup({
           <DayGroup
             key={day.date}
             group={day}
+            onOpen={onOpen}
           />
         ))}
       </div>

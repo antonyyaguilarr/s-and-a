@@ -9,16 +9,19 @@ import type { GalleryItem } from "@/types/media";
 interface MediaCardProps {
   item: GalleryItem;
   index: number;
+  onOpen: (item: GalleryItem) => void;
 }
 
 export default function MediaCard({
   item,
   index,
+  onOpen,
 }: MediaCardProps) {
   const aspectRatio = `${item.width} / ${item.height}`;
 
   return (
-    <motion.article
+    <motion.button
+      type="button"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "80px" }}
@@ -27,30 +30,43 @@ export default function MediaCard({
         delay: Math.min(index * 0.045, 0.25),
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative mb-3 break-inside-avoid overflow-hidden rounded-[18px] bg-[var(--surface)]"
+      onClick={() => onOpen(item)}
+      aria-label={`Abrir ${item.title}`}
+      className="group relative mb-3 block w-full break-inside-avoid cursor-zoom-in overflow-hidden rounded-[18px] bg-[var(--surface)] text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-light)]"
       style={{ aspectRatio }}
     >
-      {item.type === "image" ? (
-        <Image
-          src={item.src}
-          alt={item.title}
-          fill
-          priority={index < 4}
-          sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-        />
-      ) : (
-        <video
-          src={item.src}
-          poster={item.poster}
-          muted
-          playsInline
-          preload="metadata"
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-        />
-      )}
+      <motion.div
+        layoutId={`media-${item.id}`}
+        className="absolute inset-0"
+        transition={{
+          type: "spring",
+          stiffness: 340,
+          damping: 34,
+          mass: 0.85,
+        }}
+      >
+        {item.type === "image" ? (
+          <Image
+            src={item.src}
+            alt={item.title}
+            fill
+            priority={index < 4}
+            sizes="(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+          />
+        ) : (
+          <video
+            src={item.src}
+            poster={item.poster}
+            muted
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+          />
+        )}
+      </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-65 transition-opacity duration-500 group-hover:opacity-90" />
 
       {item.type === "video" && (
         <div className="pointer-events-none absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/40 backdrop-blur-xl">
@@ -82,6 +98,6 @@ export default function MediaCard({
           </div>
         )}
       </div>
-    </motion.article>
+    </motion.button>
   );
 }

@@ -1,12 +1,18 @@
 import MediaCard from "@/components/gallery/MediaCard";
-import type { DayGroup as DayGroupType } from "@/types/media";
+
+import type {
+  DayGroup as DayGroupType,
+  GalleryItem,
+} from "@/types/media";
 
 interface DayGroupProps {
   group: DayGroupType;
+  onOpen: (item: GalleryItem) => void;
 }
 
 export default function DayGroup({
   group,
+  onOpen,
 }: DayGroupProps) {
   return (
     <section className="mt-8 first:mt-0">
@@ -27,6 +33,7 @@ export default function DayGroup({
             key={item.id}
             item={item}
             index={index}
+            onOpen={onOpen}
           />
         ))}
       </div>
