@@ -1,0 +1,80 @@
+:root {
+  /* ========= COLORS ========= */
+
+  --wine-950: #16080d;
+  --wine-900: #220c13;
+  --wine-800: #35121d;
+  --wine-700: #521d2d;
+  --wine-600: #7a2d45;
+  --wine-500: #a44463;
+  --wine-400: #c86b89;
+
+  --background: #080808;
+  --surface: #121212;
+  --surface-elevated: #181818;
+  --surface-hover: #202020;
+
+  --border: rgba(255,255,255,.08);
+
+  --text-primary: #fafafa;
+  --text-secondary: rgba(255,255,255,.68);
+  --text-tertiary: rgba(255,255,255,.40);
+
+  --overlay: rgba(0,0,0,.45);
+
+  /* ========= RADIUS ========= */
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 42px;
+
+  /* ========= SPACING ========= */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ========= SHADOW ========= */
+
+  --shadow-soft:
+      0 20px 60px rgba(0,0,0,.28);
+
+  --shadow-card:
+      0 12px 34px rgba(0,0,0,.22);
+
+  /* ========= GLASS ========= */
+
+  --glass-bg:
+      rgba(18,18,18,.58);
+
+  --glass-border:
+      rgba(255,255,255,.08);
+
+  --glass-blur: 32px;
+
+  /* ========= MOTION ========= */
+
+  --duration-fast: 150ms;
+  --duration-normal: 280ms;
+  --duration-slow: 500ms;
+
+  --ease:
+      cubic-bezier(.22,1,.36,1);
+
+  /* ========= LAYOUT ========= */
+
+  --max-width: 1440px;
+}

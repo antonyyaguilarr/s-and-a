@@ -1,57 +1,28 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes } from "react";
+import { cn } from "@/lib/cn";
 
-interface Props{
-
-children:ReactNode
-
-onClick?:()=>void
-
-}
+interface Props
+  extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export default function IconButton({
-
-children,
-
-onClick
-
-}:Props){
-
-return(
-
-<button
-
-onClick={onClick}
-
-style={{
-
-width:44,
-
-height:44,
-
-borderRadius:"50%",
-
-background:"var(--surface)",
-
-border:"1px solid var(--border)",
-
-display:"flex",
-
-justifyContent:"center",
-
-alignItems:"center",
-
-cursor:"pointer",
-
-transition:"all .25s ease"
-
-}}
-
->
-
-{children}
-
-</button>
-
-)
-
+  className,
+  ...props
+}: Props) {
+  return (
+    <button
+      {...props}
+      className={cn(
+        "glass",
+        "hover-lift",
+        "rounded-full",
+        "w-11",
+        "h-11",
+        "flex",
+        "items-center",
+        "justify-center",
+        "transition-all",
+        className
+      )}
+    />
+  );
 }

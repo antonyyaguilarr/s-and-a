@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# S&A
 
-## Getting Started
+> *A private place where memories live forever.*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## About
+
+S&A is a personal web application created as a gift.
+
+Its purpose is to preserve photographs, videos and written memories inside a calm, elegant and premium experience inspired by Apple Photos and iCloud Photos.
+
+This is **not** a social network.
+
+This is **not** a cloud storage platform.
+
+This is a digital memory journal.
+
+---
+
+## Main Features
+
+- 📷 Chronological timeline
+- 🖼 Apple-inspired fullscreen viewer
+- 📚 Albums
+- 💌 Messages & poems
+- 🎥 Video support
+- ⚙ Beautiful administration panel
+- ☁ GitHub-powered content management
+- ✨ Premium animations
+
+---
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- TailwindCSS
+- Framer Motion
+- GitHub Pages
+
+---
+
+## Project Documentation
+
+Complete documentation is available inside:
+
+```
+docs/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Including:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Architecture
+- Design System
+- Design Philosophy
+- Decisions
+- Features
+- Development Workflow
+- AI Guidelines
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Current Status
 
-To learn more about Next.js, take a look at the following resources:
+🚧 Active Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private Project
