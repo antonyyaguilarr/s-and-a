@@ -1,0 +1,28 @@
+[
+  {
+    "id": "2026-08-05-001",
+    "title": "Nuestra primera foto",
+    "description": "El inicio de todo.",
+    "date": "2026-08-05",
+    "album": "Nuestros momentos",
+    "type": "image",
+    "src": "/media/demo/foto1.jpg",
+    "width": 1200,
+    "height": 1600,
+    "location": "",
+    "tags": ["#nosotros", "#primerafoto"]
+  },
+  {
+    "id": "2026-08-05-002",
+    "title": "Un momento especial",
+    "description": "Uno de esos recuerdos que siempre quiero conservar.",
+    "date": "2026-08-05",
+    "album": "Nuestros momentos",
+    "type": "image",
+    "src": "/media/demo/foto2.jpeg",
+    "width": 1600,
+    "height": 1200,
+    "location": "",
+    "tags": ["#recuerdos", "#juntos"]
+  }
+]
