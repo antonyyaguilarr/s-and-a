@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import ContentPageHeader from "@/components/content/ContentPageHeader";
@@ -13,6 +14,18 @@ export function generateStaticParams() {
   return getAlbums(galleryData as GalleryItem[]).map((album) => ({
     slug: album.slug,
   }));
+}
+
+export async function generateMetadata(
+  props: PageProps<"/albums/[slug]">,
+): Promise<Metadata> {
+  const { slug } = await props.params;
+  const album = getAlbumBySlug(galleryData as GalleryItem[], slug);
+
+  return {
+    title: album ? `${album.title} | S&A` : "Álbum no encontrado | S&A",
+    description: album?.description,
+  };
 }
 
 export default async function AlbumPage(props: PageProps<"/albums/[slug]">) {

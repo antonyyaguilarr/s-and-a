@@ -7,3 +7,4 @@
 - Updated deployment documentation to reflect Vercel.
 - Improved viewer keyboard focus management and compact mobile controls.
 - Added Phase 3 foundations: derived albums, content routes, reusable empty states, and responsive navigation.
+- Added typed content validation, page metadata, private-site robots rules, and content authoring guidance.

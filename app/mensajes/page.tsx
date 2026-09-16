@@ -3,7 +3,12 @@ import EmptyContent from "@/components/content/EmptyContent";
 import Header from "@/components/layout/Header";
 import Section from "@/components/ui/Section";
 import messagesData from "@/content/data/messages.json";
-import type { MemoryMessage } from "@/types/content";
+import { getMessages } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Mensajes | S&A",
+  description: "Cartas, poemas y palabras guardadas con cuidado.",
+};
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("es-CO", {
@@ -15,7 +20,7 @@ function formatDate(date: string) {
 }
 
 export default function MessagesPage() {
-  const messages = messagesData as MemoryMessage[];
+  const messages = getMessages(messagesData);
 
   return (
     <>
@@ -66,3 +71,4 @@ export default function MessagesPage() {
     </>
   );
 }
+import type { Metadata } from "next";

@@ -3,7 +3,12 @@ import EmptyContent from "@/components/content/EmptyContent";
 import Header from "@/components/layout/Header";
 import Section from "@/components/ui/Section";
 import storyData from "@/content/data/story.json";
-import type { StoryEvent } from "@/types/content";
+import { getStoryEvents } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Nuestra historia | S&A",
+  description: "Los capítulos que han dado forma a nuestra historia.",
+};
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("es-CO", {
@@ -15,7 +20,7 @@ function formatDate(date: string) {
 }
 
 export default function StoryPage() {
-  const events = storyData as StoryEvent[];
+  const events = getStoryEvents(storyData);
 
   return (
     <>
@@ -58,3 +63,4 @@ export default function StoryPage() {
     </>
   );
 }
+import type { Metadata } from "next";

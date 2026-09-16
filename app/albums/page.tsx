@@ -7,6 +7,11 @@ import galleryData from "@/content/data/gallery.json";
 import { getAlbums } from "@/lib/content";
 import type { GalleryItem } from "@/types/media";
 
+export const metadata: Metadata = {
+  title: "Álbumes | S&A",
+  description: "Colecciones de recuerdos que se viven juntos.",
+};
+
 export default function AlbumsPage() {
   const albums = getAlbums(galleryData as GalleryItem[]);
 
@@ -37,3 +42,4 @@ export default function AlbumsPage() {
     </>
   );
 }
+import type { Metadata } from "next";

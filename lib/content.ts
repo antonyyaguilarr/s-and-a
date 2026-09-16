@@ -1,4 +1,4 @@
-import type { Album } from "@/types/content";
+import type { Album, MemoryMessage, StoryEvent } from "@/types/content";
 import type { GalleryItem } from "@/types/media";
 
 function toSlug(value: string) {
@@ -43,4 +43,54 @@ export function getAlbums(items: GalleryItem[]): Album[] {
 
 export function getAlbumBySlug(items: GalleryItem[], slug: string) {
   return getAlbums(items).find((album) => album.slug === slug);
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null;
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === "string");
+}
+
+function isMessage(value: unknown): value is MemoryMessage {
+  return (
+    isRecord(value) &&
+    typeof value.id === "string" &&
+    typeof value.title === "string" &&
+    typeof value.body === "string" &&
+    typeof value.date === "string" &&
+    isStringArray(value.tags)
+  );
+}
+
+function isStoryEvent(value: unknown): value is StoryEvent {
+  return (
+    isRecord(value) &&
+    typeof value.id === "string" &&
+    typeof value.title === "string" &&
+    typeof value.description === "string" &&
+    typeof value.date === "string" &&
+    (value.location === undefined || typeof value.location === "string")
+  );
+}
+
+export function getMessages(data: unknown): MemoryMessage[] {
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  return data
+    .filter(isMessage)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getStoryEvents(data: unknown): StoryEvent[] {
+  if (!Array.isArray(data)) {
+    return [];
+  }
+
+  return data
+    .filter(isStoryEvent)
+    .sort((a, b) => a.date.localeCompare(b.date));
 }
