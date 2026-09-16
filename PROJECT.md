@@ -116,7 +116,7 @@ Actualmente el proyecto utiliza:
 - Tailwind CSS
 - Framer Motion
 
-El despliegue se realiza mediante GitHub Pages.
+El despliegue se realiza mediante Vercel.
 
 ---
 

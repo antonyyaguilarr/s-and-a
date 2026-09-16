@@ -1,5 +1,6 @@
 import GalleryClient from "@/components/gallery/GalleryClient";
 import Header from "@/components/layout/Header";
+import Hero from "@/components/layout/Hero";
 import Section from "@/components/ui/Section";
 
 import galleryData from "@/content/data/gallery.json";
@@ -21,15 +22,17 @@ export default function Home() {
       <Header />
 
       <main>
-        <Section>
-          <header className="pb-16 pt-16 sm:pb-20 sm:pt-20">
+        <Hero />
+
+        <Section className="scroll-mt-24">
+          <header id="timeline" className="pb-16 pt-20 sm:pb-20 sm:pt-28">
             <p className="mb-4 text-sm font-medium uppercase tracking-[0.22em] text-[var(--accent-light)]">
               S&A
             </p>
 
-            <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.07em] sm:text-7xl lg:text-8xl">
+            <h2 className="max-w-4xl text-5xl font-semibold tracking-[-0.07em] sm:text-7xl lg:text-8xl">
               Nuestros recuerdos
-            </h1>
+            </h2>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-base text-white/40">
               <span>

@@ -54,7 +54,7 @@ Animaciones
 
 Despliegue
 
-- GitHub Pages
+- Vercel
 
 Repositorio
 

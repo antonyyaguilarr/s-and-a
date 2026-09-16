@@ -1,13 +1,13 @@
-import { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes } from "react";
+
 import { cn } from "@/lib/cn";
 
-interface Props
-  extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export default function IconButton({
   className,
   ...props
-}: Props) {
+}: IconButtonProps) {
   return (
     <button
       {...props}
@@ -21,7 +21,7 @@ export default function IconButton({
         "items-center",
         "justify-center",
         "transition-all",
-        className
+        className,
       )}
     />
   );

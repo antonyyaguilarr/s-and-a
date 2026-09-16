@@ -1,6 +1,6 @@
 # Hero — Especificación Funcional
 
-> Estado: Diseño
+> Estado: Funcional
 
 ---
 
@@ -279,6 +279,16 @@ Evitar re-renderizados.
 - Scroll suave.
 - Motion refinado.
 - Ajuste de espaciados.
+
+---
+
+# Implementación actual
+
+- Hero de aproximadamente 90% de la altura visible.
+- Fondo oscuro con profundidad mediante gradientes difusos, sin competir con el contenido.
+- Secuencia de entrada una sola vez para etiqueta, título, subtítulo, descripción y llamada a explorar.
+- Enlace accesible que desplaza suavemente al Timeline.
+- Respeta `prefers-reduced-motion`.
 
 ---
 

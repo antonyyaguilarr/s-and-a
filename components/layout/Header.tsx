@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Menu } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 import { Caption } from "@/components/ui/Typography";
 
@@ -16,7 +16,7 @@ export default function Header() {
         opacity: 1,
         y: 0,
       }}
-      className="sticky top-0 z-50 flex h-20 items-center justify-between border-b border-white/10 bg-black/60 px-10 backdrop-blur-3xl"
+      className="sticky top-0 z-50 flex h-20 items-center justify-between border-b border-white/10 bg-black/60 px-5 backdrop-blur-3xl sm:px-8 lg:px-10"
     >
       <div className="flex flex-col">
         <Caption>S&A</Caption>
@@ -26,17 +26,20 @@ export default function Header() {
         </span>
       </div>
 
-      <motion.button
+      <motion.a
+        href="#timeline"
+        aria-label="Ir a nuestros recuerdos"
+        title="Ir a nuestros recuerdos"
         whileHover={{
           scale: 1.08,
         }}
         whileTap={{
           scale: 0.94,
         }}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-light)]"
       >
-        <Menu size={18} />
-      </motion.button>
+        <ArrowDown aria-hidden="true" size={18} />
+      </motion.a>
     </motion.header>
   );
 }

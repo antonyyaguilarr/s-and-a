@@ -19,6 +19,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -38,6 +39,15 @@ const transition = {
   mass: 0.85,
 };
 
+const focusableSelector = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
 export default function MediaViewer({
   items,
   selectedIndex,
@@ -46,6 +56,8 @@ export default function MediaViewer({
 }: MediaViewerProps) {
   const [zoom, setZoom] = useState(1);
   const [showInformation, setShowInformation] = useState(true);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedElement = useRef<HTMLElement | null>(null);
 
   const selectedItem = useMemo(() => {
     if (selectedIndex === null) {
@@ -108,7 +120,11 @@ export default function MediaViewer({
     }
 
     const previousOverflow = document.body.style.overflow;
+    previouslyFocusedElement.current = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
     document.body.style.overflow = "hidden";
+    dialogRef.current?.focus();
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -134,6 +150,30 @@ export default function MediaViewer({
           Math.max(currentZoom - 0.5, 1),
         );
       }
+
+      if (event.key === "Tab") {
+        const focusableElements = dialogRef.current?.querySelectorAll<HTMLElement>(
+          focusableSelector,
+        );
+
+        if (!focusableElements || focusableElements.length === 0) {
+          event.preventDefault();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        }
+
+        if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
     }
 
     window.addEventListener("keydown", handleKeyDown);
@@ -141,6 +181,7 @@ export default function MediaViewer({
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      previouslyFocusedElement.current?.focus();
     };
   }, [
     closeViewer,
@@ -202,6 +243,8 @@ export default function MediaViewer({
           role="dialog"
           aria-modal="true"
           aria-label={`Visor de ${selectedItem.title}`}
+          ref={dialogRef}
+          tabIndex={-1}
         >
           <div
             className="absolute inset-0"
@@ -209,12 +252,12 @@ export default function MediaViewer({
             aria-hidden="true"
           />
 
-          <header className="absolute inset-x-0 top-0 z-30 flex h-20 items-center justify-between px-4 sm:px-6">
-            <div className="rounded-full border border-white/10 bg-black/35 px-4 py-2 text-sm text-white/60 backdrop-blur-xl">
+          <header className="absolute inset-x-0 top-0 z-30 flex h-20 items-center justify-between gap-2 px-3 sm:px-6">
+            <div className="shrink-0 rounded-full border border-white/10 bg-black/35 px-3 py-1.5 text-xs text-white/60 backdrop-blur-xl sm:px-4 sm:py-2 sm:text-sm">
               {selectedIndex + 1} de {items.length}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               {selectedItem.type === "image" && (
                 <>
                   <ViewerButton
@@ -458,7 +501,7 @@ function ViewerButton({
       disabled={disabled}
       aria-label={label}
       title={label}
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/35 backdrop-blur-xl transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-30"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/35 backdrop-blur-xl transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-30 sm:h-10 sm:w-10"
     >
       {children}
     </button>

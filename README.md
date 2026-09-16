@@ -38,7 +38,7 @@ This is a digital memory journal.
 - TypeScript
 - TailwindCSS
 - Framer Motion
-- GitHub Pages
+- Vercel
 
 ---
 

@@ -66,7 +66,7 @@ export default function MediaCard({
         )}
       </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-65 transition-opacity duration-500 group-hover:opacity-90" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/5 to-transparent opacity-75 transition-opacity duration-500 sm:opacity-65 sm:group-hover:opacity-90 sm:group-focus-visible:opacity-90" />
 
       {item.type === "video" && (
         <div className="pointer-events-none absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/40 backdrop-blur-xl">
@@ -74,7 +74,7 @@ export default function MediaCard({
         </div>
       )}
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-5 opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-0 p-4 opacity-100 transition-all duration-500 ease-out sm:translate-y-2 sm:p-5 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 sm:group-focus-visible:translate-y-0 sm:group-focus-visible:opacity-100">
         <h4 className="text-base font-medium tracking-[-0.02em]">
           {item.title}
         </h4>
